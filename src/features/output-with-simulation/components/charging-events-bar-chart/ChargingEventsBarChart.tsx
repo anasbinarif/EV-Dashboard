@@ -76,9 +76,7 @@ const ChargingEventsBarChart: React.FC<ChargingEventsBarChartProps> = ({ data, t
     };
 
     return (
-        <div className="bg-white p-4 shadow-md rounded-md">
-            <Bar data={chartData} options={chartOptions} />
-        </div>
+        <Bar data={chartData} options={chartOptions} />
     );
 };
 

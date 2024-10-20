@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
-import { ChargingEventsHeatmapProps } from "./ChargingEventsHeatmap.types.ts";
-import { PowerChartModal } from "../index.ts";
+import { ChargingEventsHeatmapProps } from './ChargingEventsHeatmap.types.ts';
+import { PowerChartModal } from '../index.ts';
 
 const ChargingEventsHeatmap: React.FC<ChargingEventsHeatmapProps> = ({ data, interval, chargePointConfigs }) => {
-
     const svgRef = useRef<SVGSVGElement | null>(null);
     const { labels, chargingData, powerLevels } = data;
 
@@ -27,15 +26,21 @@ const ChargingEventsHeatmap: React.FC<ChargingEventsHeatmapProps> = ({ data, int
         const width = 950 - margin.left - margin.right;
         const height = 400 - margin.top - margin.bottom;
 
+        // Clear the previous SVG contents
         d3.select(svgRef.current).selectAll('*').remove();
 
+        // Set up the responsive SVG with viewBox and preserveAspectRatio
         const svg = d3.select(svgRef.current)
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
-            .append('g')
+            .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+            .attr('preserveAspectRatio', 'xMidYMid meet')
+            .style('width', '100%')
+            .style('height', '100%');
+
+        const g = svg.append('g')
             .attr('transform', `translate(${margin.left},${margin.top})`);
 
-        svg.append('text')
+        // Title
+        g.append('text')
             .attr('x', width / 2)
             .attr('y', -30)
             .attr('text-anchor', 'middle')
@@ -59,7 +64,8 @@ const ChargingEventsHeatmap: React.FC<ChargingEventsHeatmapProps> = ({ data, int
             return powerLevels.findIndex((_, i) => y >= i * step && y < (i + 1) * step);
         };
 
-        svg.selectAll()
+        // Add heatmap rectangles
+        g.selectAll()
             .data(chargingData.flat())
             .enter()
             .append('rect')
@@ -91,7 +97,7 @@ const ChargingEventsHeatmap: React.FC<ChargingEventsHeatmapProps> = ({ data, int
             })
             .on('mouseover', (event: MouseEvent, d: number) => {
                 const [x, y] = d3.pointer(event);
-                svg.append('text')
+                g.append('text')
                     .attr('x', x)
                     .attr('y', y - 5)
                     .attr('class', 'tooltip')
@@ -100,14 +106,16 @@ const ChargingEventsHeatmap: React.FC<ChargingEventsHeatmapProps> = ({ data, int
                     .style('fill', '#fff');
             })
             .on('mouseout', () => {
-                svg.selectAll('.tooltip').remove();
+                g.selectAll('.tooltip').remove();
             });
 
-        svg.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
+        // X and Y axis
+        g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
 
-        svg.append('g').call(d3.axisLeft(yScale));
+        g.append('g').call(d3.axisLeft(yScale));
 
-        svg.append('g')
+        // X axis label
+        g.append('g')
             .attr('transform', `translate(0,${height})`)
             .call(d3.axisBottom(xScale))
             .append('text')

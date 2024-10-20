@@ -9,7 +9,7 @@ import {
     Legend,
 } from 'chart.js';
 import { EnergyBubbleChartProps } from "./EnergyBubbleChart.types.ts";
-import { LineChartModal } from "../index.ts";
+import { LineChartModal } from "@features/output-with-simulation/components";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
@@ -91,9 +91,7 @@ const EnergyBubbleChart: React.FC<EnergyBubbleChartProps> = ({ data, title }) =>
 
     return (
         <div>
-            <div className="bg-white p-4 shadow-md rounded-md">
-                <Bubble data={chartData} options={chartOptions} />
-            </div>
+            <Bubble data={chartData} options={chartOptions} />
             {selectedChargePoint !== null && (
                 <LineChartModal
                     chargePoint={selectedChargePoint}

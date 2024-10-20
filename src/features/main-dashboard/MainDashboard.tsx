@@ -30,13 +30,13 @@ const MainDashboard: React.FC = () => {
     return (
         <FormProvider {...methods}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="md:col-span-1 sticky top-4 self-start">
-                    <h2 className="text-xl font-semibold mb-4">Input Parameters</h2>
+                <div className="md:col-span-1 sticky top-12 self-start bg-white dark:bg-gray-900 p-4 rounded-md shadow-md">
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-300">Input Parameters</h2>
                     <InputForm handleSubmit={handleSubmit(onSubmit)} />
                 </div>
 
-                <div className="md:col-span-2">
-                    <h2 className="text-xl font-semibold mb-4">Output</h2>
+                <div className="md:col-span-2 bg-gray-100 dark:bg-gray-900 p-4 rounded-md shadow-md">
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-300">Output</h2>
                     <OutputDisplay
                         chargePointConfigs={chargePointConfigs}
                         carConsumption={carConsumption}

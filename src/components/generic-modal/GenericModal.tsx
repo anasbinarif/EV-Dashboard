@@ -23,10 +23,10 @@ const GenericModal: React.FC<GenericModalProps> = ({ open, onClose, title, child
 
     return (
         <div
-            className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50"
+            className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-10 backdrop-blur-sm z-50"
             onClick={handleClickOutside}
         >
-            <div className="bg-white rounded-lg shadow-lg p-6 w-11/12 max-w-3xl">
+            <div className="bg-white rounded-lg shadow-lg p-6 w-11/12 max-w-3xl dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600">
                 <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-semibold">{title}</h2>
                     <button

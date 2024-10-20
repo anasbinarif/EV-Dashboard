@@ -1,4 +1,4 @@
-import {FormValues} from "../main-dashboard/MainDashboard.types.ts";
+import { FormValues } from "@features/main-dashboard/MainDashboard.types.ts";
 
 export interface OutputDisplayProps {
     chargePointConfigs: { quantity: number; power: number }[];

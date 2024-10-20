@@ -66,9 +66,7 @@ const LineChartModal: React.FC<LineChartModalProps> = ({ chargePoint, open, onCl
 
     return (
         <GenericModal open={open} onClose={onClose}>
-            <div className="mb-4">
-                <Line data={chartData} options={chartOptions} />
-            </div>
+            <Line data={chartData} options={chartOptions} />
         </GenericModal>
     );
 };
