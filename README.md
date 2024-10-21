@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# EV Dashboard
 
-Currently, two official plugins are available:
+This project provides a dashboard for simulating electric vehicle (EV) charge points usage. It allows shop owners to visualize energy consumption, peak power loads, and other key metrics to optimize the number and types of EV chargers for their parking spaces.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+Make sure you have the following installed:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **Node.js**: v20.11.1 or later
+- **Yarn**: Follow [Yarn installation guide](https://classic.yarnpkg.com/en/docs/install).
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/anasbinarif/ace-my-exam.git
+   cd ev-dashboard
+   ```
+
+2. Install dependencies using Yarn:
+
+   ```bash
+   yarn install
+   ```
+
+### Running the Development Server
+
+To run the app in development mode, use the following command:
+
+```bash
+yarn dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+This will start the development server using **Vite**. Once started, you should see output similar to this:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+VITE v3.0.0  ready in 500ms
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Local: http://localhost:5173/
+```
+
+You can now open [http://localhost:5173](http://localhost:5173) in your browser to see the application.
+
+### Building the Project
+
+To create a production build of the project, run the following command:
+
+```bash
+yarn build
+```
+
+This will generate optimized, minified files in the `dist/` directory, ready for deployment.
+
+### Previewing the Production Build
+
+If you want to preview the production build locally, you can use the following command after running `yarn build`:
+
+```bash
+yarn preview
 ```
