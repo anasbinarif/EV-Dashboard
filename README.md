@@ -3,6 +3,10 @@
 
 This project provides a dashboard for simulating electric vehicle (EV) charge points usage. It allows shop owners to visualize energy consumption, peak power loads, and other key metrics to optimize the number and types of EV chargers for their parking spaces.
 
+### Live Demo
+
+You can access the live demo of the project here: [EV Dashboard](https://ev-dashboard.netlify.app/)
+
 
 ## Getting Started
 
